@@ -7,6 +7,10 @@
     "ejs": "~1.0.0",
     "express": "^4.13.3"
   },
+  "engines": {
+     "node": "0.12.7",
+   "npm": "2.12.1"
+   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
