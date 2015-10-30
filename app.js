@@ -1,13 +1,23 @@
-'use strict';
-
 var express = require('express');
 var app = express();
-var http = require('http');
-var httpServer = http.Server(app);
 
-app.use(express.static(__dirname+'/'));
+// set the port of our application
+// process.env.PORT lets the port be set by Heroku
+var port = process.env.PORT || 1234;
 
-app.get('/', function(req, res){
-    res.sendfile(__dirname + '/video.html');
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
+// make express look in the public directory for assets (css/js/img)
+app.use(express.static(__dirname + '/'));
+
+// set the home page route
+app.get('/', function(req, res) {
+
+    // ejs render automatically looks in the views folder
+    res.render('index');
 });
-app.listen(1234);
+
+app.listen(port, function() {
+    console.log('Our app is running on http://localhost:' + port);
+});
